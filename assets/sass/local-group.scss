@@ -1,0 +1,708 @@
+/* global */
+
+.ac-NavAnchor--menu {
+    svg {
+        background-color: #951829;
+        /* Vassar Burgundy from new guide */
+    }
+    &:after {
+        border: none;
+    }
+}
+.ac-NavAnchor--top {
+    background-color: #951829;
+    color: #fff;
+}
+.galleria-theme-azur .galleria-info-description {
+    margin: 0;
+    padding: 1em;
+}
+.u-Masthead--academic .u-Masthead__head:before {
+ transform: skewY(45deg);
+}
+.g-Masthead__vassar--link,
+.u-pageInner .u-Masthead--academic .u-Masthead__head {
+    &:focus,
+    &:hover {
+        background-color: transparent;
+        color: #eee !important;
+        path {
+            fill: #eee !important;            
+        }
+    }
+}
+.Row h2, h3, h4 { 
+    scroll-margin-top: 2em; 
+}
+
+/* Chris's global stuff from Africana */
+$serif: freight-big-pro;
+$sans-serif: "acumin-pro-extra-condensed","Arial Narrow","Helvetica Condensed";
+$cream: #FFF8EF;
+$gold: #C6AA76;
+$red: #ed1c24;
+$dark-burgundy: #641A2B;
+$grad-cream-red: linear-gradient(45deg, $cream 0%, $red 100%);
+$grad-red-gold: linear-gradient(135deg, $red 0%, $gold 70%);
+$grad-darkburg-red: linear-gradient(135deg, $dark-burgundy 0%, $red 70%);
+/*  MIXINS
+    ====== */
+@mixin type-background($bg) {
+	 background: $bg;
+	 -webkit-background-clip: text;
+	 color: transparent;
+}
+/*  TYPOGRAPHY
+    ========== */
+.intro {
+	 font-size: 1.4em !important;
+	 font-family: $serif;
+	 line-height: 1.1;
+}
+.u-BioList__title {
+  font-size: 0.84em;
+	line-height: 1.3;
+}
+.u-lMain {
+  h3, h4 {
+    letter-spacing: -0.014em;
+    color: #641A2B;
+  }
+  h4 {
+      font-weight: 600;
+  }
+  .u-pageTitle,
+  .Row__title,
+  h2 {
+	  font-family: $serif;
+	  font-size: 2em;
+	  font-weight: 700;
+	  letter-spacing: -0.01em;
+	  line-height: 0.92;
+	  padding-bottom: 0.2em;
+	   position: relative;
+  	 margin-bottom: 0.8em;
+  	 margin-top: 0.2em;
+  }
+  .u-pageTitle {
+      font-size: 2.7em;
+      margin-bottom: 0;
+      span {
+          display: block;
+          font-size: 60%;
+          line-height: 1.7;
+      }
+  }
+  .home-intro-title .Row__title {
+      font-size: 2.7em;
+  }
+  table {
+      font-size: 80%;
+  }
+  figcaption, figcaption p, .captiontext, .captiontext p {
+      font-size: 80%;
+  }
+}
+.pullquote {
+  p {
+	 font-family: $sans-serif;
+	 font-size: 2.4em;
+	 line-height: 1;
+	 padding-bottom: 0.2em;
+  }
+}
+/*  THEMING
+    ======= */
+ .theme-cream {
+	 background: #FFF8EF;
+}
+ .u-BioList__title {
+	 color: #63666A;
+}
+ .u-lMain .Row__title,
+ .u-lMain h2, 
+.u-pageTitle {
+	color: $dark-burgundy;
+  @include type-background($grad-darkburg-red);
+}
+ .u-lMain .Row__title:after,
+ .u-lMain h2:after {
+	 content: "";
+	 position: absolute;
+	 width: 3em;
+	 border-top: 1px solid #ed1c24;
+	 left: 0;
+	 bottom: -0.25em;
+}
+.pullquote {
+  p {
+    @include type-background($grad-red-gold);
+  }
+}
+/*  STRUCTURE
+    ========= */
+.pullquote {
+   @media screen and (min-width: 37.5em) {
+		 width: 50%;
+		 float: right;
+		 padding-left: 2em;
+    }
+   @media screen and (min-width: 64em) {
+		width: 60%;
+		margin-right: -10% 
+  }
+}
+ .row-has-bg {
+	 position: relative;
+	 &:before {
+  	 content: "";
+  	 height: 100%;
+  	 width: 100%;
+  	 position: absolute;
+  	 background-size: cover;
+  	 background-attachment: fixed;
+  	 will-change: transform;
+  	 top: 0;
+  	 left: 0;
+	 }
+   * {
+  	 z-index: 10;
+   }
+}
+ .u-lMain h2 {
+   display: inline-block;
+ }
+ .width-wide {
+	 margin-left: calc(50% - 50vw);
+	 margin-right: calc(50% - 50vw);
+	 width: 44em;
+	 transform: translateX(calc(50vw - 50%));
+	 max-width: 100vw;
+}
+ @media screen and (min-width: 37.5em) {
+	 .u-BioList__list {
+		 column-count: 2;
+		 column-gap: 1em;
+	}
+}
+/* end global */
+
+/* local animation - maybe global for academic template */
+@-webkit-keyframes shift-left {
+    from {
+        opacity: 0;
+        transform: translateX(-10em)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+@keyframes shift-left {
+    from {
+        opacity: 0;
+        transform: translateX(-10em)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+@-webkit-keyframes shift-right {
+    0% {
+        opacity: 0;
+        transform: translateX(4em) skewX(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0) skewX(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) skewX(-10deg);
+    }
+}
+@keyframes shift-right {
+    0% {
+        opacity: 0;
+        transform: translateX(4em) skewX(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0) skewX(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) skewX(-10deg);
+    }
+}
+.u-pageHome {
+    .g-Masthead__ID,
+    .u-Masthead__head {
+        transform: translateX(0) skewX(0);
+    }
+    .g-Masthead__ID {
+        -webkit-animation-name: shift-left;
+        animation-name: shift-left;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-duration: 4s;
+        animation-duration: 4s;
+    }
+    .u-Masthead__head {
+        -webkit-animation-name: shift-right;
+        animation-name: shift-right;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-duration: 4s;
+        animation-duration: 4s;
+    }
+    .u-lHeader {
+        position: relative;
+    }
+    .u-lHeader:after {
+        background: url(../images/arrow.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        content: '';
+        position: absolute;
+        width: 2em;
+        height: 2em;
+        bottom: 2em;
+        left: calc(50% - 1em);
+        animation-name: bounce;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        opacity: 1;
+        transition: 0.4s opacity ease;
+    }
+    @keyframes bounce {
+      0% {
+        transform: translateY(-0.2em); }
+      50% {
+        transform: translateY(0.2em); }
+      100% {
+        transform: translateY(-0.2em); } 
+    }
+}
+.u-Masthead__siteName--link {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    overflow: visible;
+}
+
+/* together header */
+.u-lHeader {
+    height: 20em;
+    padding: 7em 5%;
+}
+.u-Masthead--academic {
+    .u-Masthead__siteName {
+        width: 14em;
+        margin: 0 auto;
+    }
+    .u-Masthead__siteName--link {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        overflow: visible;
+    }
+    .g-Masthead__vassar--link {
+        width: 9.8em;
+        margin: auto;
+        top: .8em;
+    }
+    .g-Masthead__ID {
+        color: #fff;
+    }
+    .u-Masthead__head {
+        margin-left: 0;
+        letter-spacing: .01em;
+        font: normal 300 2.5em "masqualero", sans-serif;
+        /* font-family: covik-sans, sans-serif; */
+        font-weight: 400;
+        text-transform: capitalize;
+        letter-spacing: -0.01em;
+        &:before {
+            content: none
+        }
+    }
+}
+.u-pageInner {
+    .u-Masthead__head {
+        transform: skew(-10deg);
+    }
+}
+@media screen and (min-width: 37.5em) {
+    .u-Masthead--academic.u-Masthead {
+        min-height: 0;
+    }
+}
+@media screen and (min-width: 53.1em) {
+    .u-lHeader {
+        height: 36em;
+    }
+    .u-Masthead--academic.u-Masthead {
+        max-width: 100%;
+        min-height: 12.5rem;
+    }
+    .u-Masthead--academic {
+        .u-Masthead__siteName--link {
+            display: inline;
+        }
+        .u-Masthead__siteName {
+            width: 38em;
+        }
+        .g-Masthead__vassar--link {
+            width: 17.8em;
+            margin: auto 0 0 1em;
+            top: .12em;
+        }
+        .u-Masthead__head {
+            font-size: 4.75rem;
+        }
+    }
+    .u-pageInner {
+        .u-lHeader {
+            height: inherit;
+            padding: 14% 8% 2% 2%;
+        }
+        .u-Masthead--academic .u-Masthead__siteName {
+            width: 100%;
+        }
+    }   
+}
+@media screen and (max-width: 53.1em) {
+	.g-Masthead__vassar--link {
+	    margin: 0 !important;
+	    padding: 0 !important;
+	}
+	.u-Masthead__siteName--link {
+	    display: flex !important;
+	    align-items: unset !important;
+	    width: 100%;
+	}
+	.u-Masthead__head {
+	    margin-top: 0.04em;
+	}
+	.u-Masthead__siteName	{
+		width: 100% !important;
+	}
+}
+$homepage-bg-color: #951829;
+$homepage-bg-image: "../images/header-home-bg-quad-no-gradient.jpg";
+.u-pageHome {
+	.u-Masthead__siteName {
+		transition: 0.4s all ease;	
+		transition-property: opacity, transform;
+	}
+	.u-lHeader {
+		background: $homepage-bg-color;
+		transition: 0.4s background ease;
+		&:before {
+			content: '';
+			background: url($homepage-bg-image);
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-size: cover;
+			opacity: 0.6;
+			position: absolute;
+			transition: 0.4s all ease;
+			transition-property: opacity, filter;
+			will-change: transform;
+			mix-blend-mode: multiply;
+		}
+	}
+	&:not(.is-firefox) {
+		.u-lHeader:before {
+			filter: grayscale(1);			
+		}
+	}
+	&.scrolled {
+		.u-lHeader {
+			background: #fff;
+			&:before {
+				filter: grayscale(0);
+				opacity: 1;	
+			}
+			&:after {
+				opacity: 0;
+			}
+		}
+		.u-Masthead__siteName {
+			opacity: 0;
+			transform: scale(0.9);
+		}
+	}
+}
+.u-pageInner {
+	.u-lHeader {
+	    position: relative;
+	    &:before {
+		    position: absolute;
+		    content: '';
+		    width: 100%;
+		    height: 100%;
+		    bottom: 0;
+		    left: 0;
+		    background: #000;
+		    opacity: 0.5;
+			@media screen and (min-width: 50em) {
+			    background: linear-gradient(to top,  rgba(0,0,0,1) 0%,  rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+				height: 40%;
+			}
+	    }
+	}
+}
+.u-lHeader {
+    .u-folderFaculty-staff-administrators & {
+        background-image: url(../images/banner-0088_18_05_KR_8.jpg);
+    }
+    .u-folderStudents & {
+        background-image: url(../images/banner-campus-1910-ja-vassar-vb-0043.jpg);
+    }
+    .u-folderCampus-access & {
+        background-image: url(../images/header-bg-0317_Vassar-College_exteriors-+-campus-life_Oct-2019_JA.jpg);
+    }
+    .u-folderCommunity & {
+        background-image: url(../images/banner-campus-gate-fall-15-tt-1.jpg);
+    }
+    .u-folderCommunity-care-standards & {
+        background-image: url(../images/banner-0204-17-08-ifu-gordon-commons-vassar-8943.jpg);
+    }
+    .u-folderAnnouncements & {
+        background-image: url(../images/main-0069-19-05-kr-spring-vassar-5091.jpg);
+    }
+    .u-folderTeaching-learning & {
+        background-image: url(../images/banner-taylor-raymond-0069-19-05-kr-spring-vassar-4221.jpg);
+    }
+    .u-folderHealth-and-safety & {
+       background-image: url(../images/banner-Sunset-Lake-15-TT_1519.jpg);
+    }
+    .u-folderFour-phases & {
+       background-image: url(../images/banner-0105_14_11_TT_2872.jpg);
+    }
+    .u-folderLiving & {
+       background-image: url(../images/header-bg-0403_Vassar-College_exteriors-+-campus-life_Oct-2019_JA.jpg);
+    }
+    .u-folderShutdown-plan & {
+       background-image: url(../images/banner-0191-19-10-ali-amphitheater-drone-vassar-vb-2048.jpg);
+    }
+    .u-folderCommittee-and-contributors & {
+       background-image: url(../images/banner-bridge-0059-17-06-kr-vassar-0076.jpg);
+    }
+}
+/* grid */
+.grid-2cols > * {
+  margin-bottom: 0.2em;
+}
+@media screen and (min-width: 50em) {
+  .grid-2cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.2em;
+  }
+  .grid-2cols > * {
+    margin-bottom: 0;
+  }
+}
+.RowContainer.width-wide {
+  width: auto;
+}
+.width-wide .Row {
+  max-width: 50em;
+}
+.image-tile {
+  background: linear-gradient(135deg, #641a2b 0%, #ed1c24 70%);
+  display: flex;
+  flex-flow: column;
+  height: 20em;
+  overflow: hidden;
+  position: relative;
+  justify-content: space-between;
+  text-align: center;
+  padding: 6em 6%;
+  margin-bottom: 1em;
+  transition: 0.4s ease all;
+  transition-property: background, transform;
+  text-decoration: none !important;
+}
+.image-tile .image-tile__title:after {
+  display: none;
+}
+.image-tile .image-tile__title,
+.image-tile .image-tile__intro {
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  transition: 0.4s ease all;
+  transition-property: opacity, transform;
+}
+.image-tile .image-tile__img {
+  opacity: 0.4;
+  filter: grayscale(1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  object-position: center;
+  height: 100%;
+  transition: 0.4s ease all;
+  transition-property: filter, opacity;
+}
+.image-tile:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+.image-tile:hover .image-tile__img {
+  opacity: 1;
+  filter: grayscale(0);
+}
+.image-tile:hover .image-tile__title,
+.image-tile:hover .image-tile__intro {
+  opacity: 0;
+}
+.image-tile:hover .image-tile__title {
+  transform: translateY(-1em);
+}
+.image-tile:hover .image-tile__intro {
+  transform: translateY(1em);
+}
+.image-tile {
+	height: 16em;
+}
+.image-tile__img {
+	opacity: 0.3;
+}
+.grid-4cols {
+	@media screen and (min-width: 37.5em) {
+		 display: grid;
+		 grid-template-columns: 1fr 1fr;
+		 grid-gap: 0.2em;
+	}
+	@media screen and (min-width: 70em) {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+}
+.RowContainer--feature-grid {
+	padding: 2em;
+	.Row {
+		max-width: none;
+	}
+}
+.image-tile {
+	transform: skewX(-4deg);
+	&:hover {
+		 transform: scale(1.1) skewX(-4deg);
+	}
+	& > * {
+		transform: skewX(4deg);
+	}
+}
+h2.image-tile__title {
+    font-size: 1.7em;
+}
+.image-tile__img {
+	left: -5% !important;
+	width: 110% !important;
+	margin: 0;
+	max-width: none;
+}
+/* end grid */
+.width-wide .Row {
+	max-width: 42em;
+}
+.bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 4em 5%;
+}
+.key-values {
+    color: #fff;
+    .Row__title {
+        color: #fff;
+        &:after {
+            border-top: 1px solid #fff !important;
+        }
+    }
+    /*.Row {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 5%;        
+    }*/
+    &:before {
+        background-image: url("../images/home-key-values-chapel-0031-15-04-kr-vassar-0047.jpg");
+        opacity: 1;
+    }
+}
+.row-has-bg:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-attachment: fixed;
+    will-change: transform;
+    top: 0;
+    left: 0;
+}
+.figure--image {
+	&.align-right {
+	    float: right;
+	    padding-left: 2em;
+	    padding-bottom: 2em;
+		&.is-outdented {
+			@media screen and (min-width: 50em) {
+			    margin-right: -10%;
+			}
+		}
+	}
+	&.align-left {
+	    float: left;
+	    padding-right: 2em;
+	    padding-bottom: 2em;
+		&.is-outdented {
+			@media screen and (min-width: 50em) {
+			    margin-left: -10%;
+		    }
+		}
+	}
+	&.width-half {
+		width: 50%;
+		&.is-outdented {
+			@media screen and (min-width: 50em) {
+				width: 60%;
+			}
+		}
+	}
+}
+.animate-onload, .top-75pfrom-topOfWindow {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: zoom-in;
+    animation-name: zoom-in;
+}
+.u-folderStudents,
+.u-folderFaculty-staff-administrators,
+.u-folderCommunity {
+    .u-NavSite__main {
+        .u-NavSite__level--1 .u-NavSite__itemContainer {
+            display:none;   
+        }
+        .u-NavSite__level--1 .u-NavSite__itemContainer:first-child {
+            display:block;
+        }
+    }
+}
